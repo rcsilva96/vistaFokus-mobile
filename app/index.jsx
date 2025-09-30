@@ -1,4 +1,4 @@
-import { Image, StyleSheet, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 
 export default function Index() {
   return (
@@ -10,7 +10,22 @@ export default function Index() {
         style = {{ width : 300,  height : 300 }}
       />
 
-      <View style={styles.actions}/>
+      <View style={styles.actions}>
+
+        <Text style={styles.timer}>25:00</Text>
+
+        <Pressable style={styles.btn}>
+          <Text style={styles.btnText}>Iniciar</Text>
+        </Pressable>
+
+      </View>
+
+      <View style ={styles.footer}>
+
+        <Text style={styles.footerText}>TechVista, 2025</Text>
+
+      </View>
+
     </View>
   );
 }
@@ -34,7 +49,8 @@ const styles = StyleSheet.create({
     width: '80%',
     borderRadius: 32,
     borderWidth: 2,
-    borderColor: '#144480'
+    borderColor: '#144480',
+    gap: 32
 
   },
   
@@ -42,6 +58,46 @@ const styles = StyleSheet.create({
 
     color: '#FFF'
     
+  },
+
+  timer: {
+
+    fontSize: 54,
+    color: '#FFF',
+    textAlign: 'center',
+    fontWeight: 'bold'
+
+  },
+
+  btn: {
+
+    backgroundColor: '#B872FF',
+    padding: 8,
+    borderRadius: 32,
+
+  },
+
+  btnText: {
+
+    textAlign: 'center',
+    color: '#021123',
+    fontSize: 18,
+    fontWeight: 'bold'
+
+  },
+
+  footer: {
+
+    width: '80%',
+    paddingVertical: 32
+
+  },
+
+  footerText: {
+
+    textAlign: 'center',
+    color: '#98A0A8',
+    fontSize: 14
   }
 
 })
