@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { VistaFokusButton } from './components/vistaFokusButton';
+import { ActionButton } from './components/ActionButton';
+import { Timer } from './components/Timer';
 
 const pomodoro = [
   {
@@ -43,27 +46,20 @@ export default function Index() {
 
           {pomodoro.map(p => (
 
-          <Pressable
-            key={p.id} 
-            style={timerType.id === p.id ? styles.contextButtonActive : null}
-            onPress={ () => setTimerType(p) }
-          >
-
-            <Text style={styles.contextButtonText}>{p.display}</Text>
-
-          </Pressable>
+            <ActionButton
+              key={p.id}
+              active={timerType.id === p.id}
+              onPress={() => setTimerType(p)}
+              display={p.display}
+            />
 
           ))}
 
         </View>
 
-        <Text style={styles.timer}>
-          { new Date(timerType.initialValue * 1000).toLocaleTimeString('pt-BR', { minute: '2-digit', second: '2-digit' }) }
-        </Text>
+        <Timer totalSeconds={timerType.initialValue} />
 
-        <Pressable style={styles.btn}>
-          <Text style={styles.btnText}>Iniciar</Text>
-        </Pressable>
+        <VistaFokusButton />
 
       </View>
 
@@ -80,17 +76,13 @@ export default function Index() {
 const styles = StyleSheet.create({
 
   container: {
-
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: '#021123',
     //gap: 40 - não se aplica
-
   },
-
   actions: {
-
     padding: 24,
     backgroundColor: '#14448080',
     width: '80%',
@@ -98,70 +90,33 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#144480',
     gap: 32
-
   },
-
   text: {
-
     color: '#FFF'
-
   },
-
-  timer: {
-
-    fontSize: 54,
-    color: '#FFF',
-    textAlign: 'center',
-    fontWeight: 'bold'
-
-  },
-
   btn: {
-
     backgroundColor: '#B872FF',
     padding: 8,
     borderRadius: 32,
-
   },
-
   btnText: {
-
     textAlign: 'center',
     color: '#021123',
     fontSize: 18,
     fontWeight: 'bold'
-
   },
-
   footer: {
-
     width: '80%',
     paddingVertical: 32
-
   },
-
   footerText: {
-
     textAlign: 'center',
     color: '#98A0A8',
     fontSize: 14
   },
-
-  context:{
+  context: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItens: 'center'
   },
-
-  contextButtonActive:{
-    backgroundColor: '#144480',
-    borderRadius: 8
-  },
-
-  contextButtonText:{
-    fontSize: 12.5,
-    color: '#FFF',
-    padding: 8,
-  },
-
 })
