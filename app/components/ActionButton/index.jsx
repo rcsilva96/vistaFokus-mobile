@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text } from "react-native";
 
-export const ActionButton = ({active, onPress, display}) => {
+const ActionButton = ({active, onPress, display}) => {
 
     return (
 
@@ -33,3 +33,5 @@ contextButtonActive:{
   }
 
 })
+
+export default ActionButton;

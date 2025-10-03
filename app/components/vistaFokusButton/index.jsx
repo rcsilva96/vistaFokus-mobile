@@ -1,9 +1,10 @@
 import { Pressable, StyleSheet, Text } from 'react-native';
 
-export const VistaFokusButton = ( { onPress, title }) => {
+const VistaFokusButton = ( { onPress, title, icon }) => {
 
     return (
         <Pressable style={styles.btn} onPress={onPress}>
+            {icon}
             <Text style={styles.btnText}>{title}</Text>
         </Pressable>
     );
@@ -17,6 +18,10 @@ const styles = StyleSheet.create({
             backgroundColor: '#B872FF',
             padding: 8,
             borderRadius: 32,
+            flexDirection: 'row',
+            gap: 12,
+            alignItems: 'center',
+            justifyContent: 'center',
 
         },
 
@@ -25,7 +30,9 @@ const styles = StyleSheet.create({
             textAlign: 'center',
             color: '#021123',
             fontSize: 18,
-            fontWeight: 'bold'
+            fontWeight: 'bold',
 
         },
     })
+
+    export default VistaFokusButton;

@@ -1,27 +1,28 @@
 import { useRef, useState } from "react";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
-import { VistaFokusButton } from './components/vistaFokusButton';
-import { ActionButton } from './components/ActionButton';
-import { Timer } from './components/Timer';
+import VistaFokusButton from './components/VistaFokusButton';
+import ActionButton from './components/ActionButton';
+import Timer from './components/Timer';
+import { IconPlay, IconPause } from './components/Icons';
 
 const pomodoro = [
   {
     id: 'focus',
-    initialValue: 25,
+    initialValue: 25 * 60,
     image: require('./assets/img/luciaPomodoro.png'),
     display: 'Foco',
   },
 
   {
     id: 'shortBreak',
-    initialValue: 5,
+    initialValue: 5 * 60,
     image: require('./assets/img/LuciaPausaCurta.png'),
     display: 'Pausa curta',
   },
 
   {
     id: 'longBreak',
-    initialValue: 15,
+    initialValue: 15 * 60,
     image: require('./assets/img/LuciaPausaLonga.png'),
     display: 'Pausa longa',
   }
@@ -73,7 +74,6 @@ export default function Index() {
         return oldState -1;
 
       })
-      console.log('tic')
     }, 1000)
 
     timerRef.current = id;
@@ -108,7 +108,8 @@ export default function Index() {
         <Timer totalSeconds={seconds} />
 
         <VistaFokusButton
-          title={timerRunning ? 'Pausar' : 'Iniciar'} 
+          title={timerRunning ? 'Pausar' : 'Iniciar'}
+          icon={timerRunning ? <IconPause /> : <IconPlay />}
           onPress={toggleTimer}
           />
 
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: '#021123',
+    backgroundColor: '#1A1237',
     //gap: 40 - não se aplica
   },
   actions: {
