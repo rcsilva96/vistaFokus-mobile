@@ -1,10 +1,10 @@
 import { Pressable, StyleSheet, Text } from 'react-native';
 
-export const VistaFokusButton = () => {
+export const VistaFokusButton = ( { onPress, title }) => {
 
     return (
-        <Pressable style={styles.btn}>
-            <Text style={styles.btnText}>Iniciar</Text>
+        <Pressable style={styles.btn} onPress={onPress}>
+            <Text style={styles.btnText}>{title}</Text>
         </Pressable>
     );
 
